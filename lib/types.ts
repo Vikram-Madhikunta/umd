@@ -53,6 +53,6 @@ export interface ValidationResult {
 }
 
 export interface CompleteForm {
-    basicInfo : BasicInfo;
+    basicInfo : BasicInfo;  
     addressInfo :  AddressInfo;
 }

@@ -15,6 +15,7 @@ const UserCard = ({ user }: { user: User }) => {
           </p>
           <p>
             <span className="font-medium text-gray-700">City:</span> {user.city}
+            <p></p>
           </p>
         </div>
       </div>
