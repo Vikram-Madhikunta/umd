@@ -15,14 +15,14 @@ const AddressInfoForm: React.FC<Props> = ({ data, onChange, onNext, onBack }) =>
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 bg-white p-8 rounded-xl shadow-lg max-w-md mx-auto">
       <input
         type="text"
         name="street"
         value={data.street}
         onChange={handleChange}
         placeholder="Street"
-        className="w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
       <input
         type="text"
@@ -30,7 +30,7 @@ const AddressInfoForm: React.FC<Props> = ({ data, onChange, onNext, onBack }) =>
         value={data.city}
         onChange={handleChange}
         placeholder="City"
-        className="w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
       <input
         type="text"
@@ -38,14 +38,20 @@ const AddressInfoForm: React.FC<Props> = ({ data, onChange, onNext, onBack }) =>
         value={data.zip}
         onChange={handleChange}
         placeholder="ZIP Code"
-        className="w-full p-2 border rounded"
+        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
 
-      <div className="flex justify-between">
-        <button onClick={onBack} className="px-4 py-2 bg-gray-300 rounded">
+      <div className="flex justify-between pt-4">
+        <button
+          onClick={onBack}
+          className="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition"
+        >
           Back
         </button>
-        <button onClick={onNext} className="px-4 py-2 bg-blue-500 text-white rounded">
+        <button
+          onClick={onNext}
+          className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+        >
           Next
         </button>
       </div>

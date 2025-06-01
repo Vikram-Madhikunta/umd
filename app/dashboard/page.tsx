@@ -1,3 +1,5 @@
+// Change all text color classes from text-gray-800, text-lg, text-red-600, etc. to text-black where appropriate.
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -41,37 +43,50 @@ const DashboardPage = () => {
     setFilteredUsers(filtered);
   }, [searchTerm, users]);
 
-  if (loading) return <p className="text-primary">Loading...</p>;
-  if (error) return <p className="text-red-600">{error}</p>;
+  if (loading) return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+      <p className="text-black text-lg font-medium animate-pulse">Loading...</p>
+    </div>
+  );
+  if (error) return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
+      <p className="text-black text-lg font-medium">{error}</p>
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-neutral-light px-4 py-8">
-      <h1 className="text-3xl font-bold text-primary mb-6">User Dashboard</h1>
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex flex-col items-center px-4 py-10">
+      <div className="w-full max-w-5xl bg-white/90 rounded-3xl shadow-2xl p-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <h1 className="text-4xl font-extrabold text-black tracking-tight">User Dashboard</h1>
+          <Link href="/dashboard/add">
+            <button className="flex items-center gap-2 bg-blue-600 hover:bg-purple-600 text-white px-5 py-2.5 rounded-xl font-semibold shadow transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-600">
+              Add New User
+            </button>
+          </Link>
+        </div>
 
-      <input
-        type="text"
-        placeholder="Search by name or city"
-        className="w-full p-3 border border-secondary rounded-2xl mb-6 shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+        <div className="mb-8">
+          <input
+            type="text"
+            placeholder="Search by name or city"
+            className="w-full p-4 border border-blue-400 rounded-2xl shadow focus:outline-none focus:ring-2 focus:ring-blue-400 bg-neutral-50 text-lg text-black transition"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filteredUsers.length > 0 ? (
-          filteredUsers.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))
-        ) : (
-          <p className="text-neutral-dark">No users found</p>
-        )}
-      </div>
-
-      <div className="flex justify-center mt-10">
-        <Link href="/dashboard/add">
-          <button className="bg-accent text-white px-6 py-3 rounded-xl font-medium hover:bg-accent-dark transition-colors duration-300 shadow-lg">
-            ➕ Add New User
-          </button>
-        </Link>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user) => (
+              <div key={user.id} className="transition-transform hover:-translate-y-1 hover:shadow-xl">
+                <UserCard user={user} />
+              </div>
+            ))
+          ) : (
+            <p className="text-black text-center col-span-full">No users found</p>
+          )}
+        </div>
       </div>
     </div>
   );
